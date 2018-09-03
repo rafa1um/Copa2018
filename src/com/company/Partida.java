@@ -9,7 +9,6 @@ public class Partida {
     private int placar1;
     private int placar2;
 
-
     // Métodos Públicos
 
     public void partida(Equipe e1, Equipe e2) {

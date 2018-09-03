@@ -11,7 +11,6 @@ public class Equipe {
     private int golsC;
     private int golsS;
     private int pts;
-    private int overall;
 
     // Métodos Públicos
     public void status() {

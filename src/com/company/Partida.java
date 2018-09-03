@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Random;
 
-public class FaseGrupo {
+public class Partida {
     // Atributos
     private Equipe equipe1;
     private Equipe equipe2;
@@ -12,7 +12,7 @@ public class FaseGrupo {
 
     // Métodos Públicos
 
-    public void fase_grupo(Equipe e1, Equipe e2) {
+    public void partida(Equipe e1, Equipe e2) {
         if(e1.getChave().equals(e2.getChave()) && e1 != e2) {
             this.equipe1 = e1;
             this.equipe2 = e2;

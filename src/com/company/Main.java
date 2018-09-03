@@ -75,8 +75,8 @@ public class Main {
 
         //System.out.println(n);
 
-        FaseGrupo fg = new FaseGrupo();
-        fg.fase_grupo(e[0], e[3]);
+        Partida p = new Partida();
+        p.partida(e[0], e[3]);
     }
 
 }

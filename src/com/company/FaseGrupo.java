@@ -10,7 +10,12 @@ public class FaseGrupo implements Partida {
     private int placar2;
 
     public void fase_grupo(Equipe equipe1, Equipe equipe2) {
-        if(equipe1.getChave().equals(equipe2.getChave()) && equipe1 != equipe2) {
+        try {
+
+            if (!(equipe1.getChave().equals(equipe2.getChave()) && equipe1 != equipe2)) {
+                throw new IllegalArgumentException("Partida inválida na fase de grupos!");
+            }
+
             this.equipe1 = equipe1;
             this.equipe2 = equipe2;
             System.out.println(this.equipe1.getNome() + " @ " + this.equipe2.getNome());
@@ -48,10 +53,11 @@ public class FaseGrupo implements Partida {
             } else {
                 System.out.println("Empate!!");
             }
+
+        } catch (IllegalArgumentException erro) {
+            System.out.println(erro.getMessage());
         }
-        else {
-            System.out.println("Partida inválida!!");
-        }
+
     }
 
 

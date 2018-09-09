@@ -10,7 +10,12 @@ public class MataMata extends FaseGrupo {
     private int placar2;
 
     public void mata_mata(Equipe equipe1, Equipe equipe2) {
-        if(equipe1.getChave().equals(equipe2.getChave()) && equipe1 != equipe2) {
+        try {
+
+        if(equipe1.equals(equipe2)) {
+            throw new IllegalArgumentException("Partida inválida no mata-mata!");
+        }
+
             this.equipe1 = equipe1;
             this.equipe2 = equipe2;
             System.out.println(this.equipe1.getNome() + " @ " + this.equipe2.getNome());
@@ -49,10 +54,10 @@ public class MataMata extends FaseGrupo {
                 System.out.println("Empate!!");
                 System.out.println("\nVAI TER PENALTI, FILHO DA PUTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!");
             }
+        } catch(IllegalArgumentException erro) {
+            System.out.println(erro.getMessage());
         }
-        else {
-            System.out.println("Partida inválida!!");
-        }
+
     }
 
 

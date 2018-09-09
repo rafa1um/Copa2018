@@ -76,9 +76,9 @@ public class Main {
         //System.out.println(n);
 
         FaseGrupo p = new FaseGrupo();
-        p.fase_grupo(g[0], e[3]);
-        MataMata q = new MataMata();
-        q.mata_mata(e[3], e[3]);
+        p.fase_grupo(a);
+        //MataMata q = new MataMata();
+        //q.mata_mata(e[3], e[3]);
     }
 
 }

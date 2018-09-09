@@ -9,88 +9,64 @@ public class FaseGrupo implements Partida {
     private int placar1;
     private int placar2;
 
-    public void fase_grupo(Equipe equipe1, Equipe equipe2) {
-        try {
+    public void fase_grupo (Equipe[] grupo1) {
 
-            if (!(equipe1.getChave().equals(equipe2.getChave()) && equipe1 != equipe2)) {
-                throw new IllegalArgumentException("Partida inválida na fase de grupos!");
-            }
+        for (int j = 0; j < 2; j = j + 2) {
 
-            this.equipe1 = equipe1;
-            this.equipe2 = equipe2;
-            System.out.println(this.equipe1.getNome() + " @ " + this.equipe2.getNome());
+            try {
 
-            /* --------- Randomização do time vencedor de acordo com seu overall ---------- */
+                if (!(grupo1[j].getChave().equals(grupo1[j+1].getChave()) && grupo1[j] != grupo1[j+1])) {
+                    throw new IllegalArgumentException("Partida inválida na fase de grupos!");
+                }
 
-            Random aleatorio = new Random();
-            for (int i = 0; i < 90; i++) {
-                int g1 = aleatorio.nextInt(this.equipe1.getOverall()/10);
-                int g2 = aleatorio.nextInt(this.equipe2.getOverall()/10);
+                this.equipe1 = grupo1[j];
+                this.equipe2 = grupo1[j + 1];
+                System.out.println(this.equipe1.getNome() + " @ " + this.equipe2.getNome());
 
-                if (g1 < g2) {
-                    g1 = aleatorio.nextInt(26);
-                    g2 = aleatorio.nextInt(20) + 6;
-                    if (g1 == g2) {
-                        this.placar2 = this.placar2 + 1;
-                    }
-                } else if (g1 > g2) {
-                    g1 = aleatorio.nextInt(20) + 6;
-                    g2 = aleatorio.nextInt(26);
-                    if (g1 == g2) {
-                        this.placar1 = this.placar1 + 1;
+                /* --------- Randomização do time vencedor de acordo com seu overall ---------- */
+
+                Random aleatorio = new Random();
+                for (int i = 0; i < 90; i++) {
+                    int g1 = aleatorio.nextInt(this.equipe1.getOverall() / 10);
+                    int g2 = aleatorio.nextInt(this.equipe2.getOverall() / 10);
+
+                    if (g1 < g2) {
+                        g1 = aleatorio.nextInt(this.equipe1.getOverall() / 10);
+                        g2 = aleatorio.nextInt(this.equipe1.getOverall() / 10) + 6;
+                        if (g1 == g2) {
+                            this.placar2 = this.placar2 + 1;
+                        }
+                    } else if (g1 > g2) {
+                        g1 = aleatorio.nextInt(this.equipe1.getOverall() / 10) + 6;
+                        g2 = aleatorio.nextInt(this.equipe1.getOverall() / 10);
+                        if (g1 == g2) {
+                            this.placar1 = this.placar1 + 1;
+                        }
                     }
                 }
+
+                /* -------------------- Fim random --------------------*/
+
+                System.out.println(this.equipe1.getNome() + " " + this.placar1 + " @ " + this.placar2 + " " + this.equipe2.getNome());
+
+                if(this.placar1 > this.placar2) {
+                    System.out.println(this.equipe1.getNome() + " Ganhou!!");
+                    this.equipe1.setPts(this.equipe1.getPts() + 3);
+                } else if (this.placar1 < this.placar2){
+                    System.out.println(this.equipe2.getNome() + " Ganhou!!");
+                    this.equipe1.setPts(this.equipe2.getPts() + 3);
+                } else {
+                    System.out.println("Empate!!");
+                    this.equipe1.setPts(this.equipe1.getPts() + 1);
+                    this.equipe2.setPts(this.equipe2.getPts() + 1);
+                }
+
+            } catch (IllegalArgumentException erro) {
+                System.out.println(erro.getMessage());
             }
 
-            /* -------------------- Fim random --------------------*/
-
-            System.out.println(this.equipe1.getNome() + " " + this.placar1 + " @ " + this.placar2 + " " + this.equipe2.getNome());
-
-            if(this.placar1 > this.placar2) {
-                System.out.println(this.equipe1.getNome() + " Ganhou!!");
-            } else if (this.placar1 < this.placar2){
-                System.out.println(this.equipe2.getNome() + " Ganhou!!");
-            } else {
-                System.out.println("Empate!!");
-            }
-
-        } catch (IllegalArgumentException erro) {
-            System.out.println(erro.getMessage());
         }
 
-    }
-
-
-    public Equipe getEquipe1() {
-        return equipe1;
-    }
-
-    public void setEquipe1(Equipe equipe1) {
-        this.equipe1 = equipe1;
-    }
-
-    public Equipe getEquipe2() {
-        return equipe2;
-    }
-
-    public void setEquipe2(Equipe equipe2) {
-        this.equipe2 = equipe2;
-    }
-
-    public int getPlacar1() {
-        return placar1;
-    }
-
-    public void setPlacar1(int placar1) {
-        this.placar1 = placar1;
-    }
-
-    public int getPlacar2() {
-        return placar2;
-    }
-
-    public void setPlacar2(int placar2) {
-        this.placar2 = placar2;
     }
 }
 

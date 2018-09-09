@@ -6,6 +6,6 @@ public interface Partida {
 
     // Métodos Públicos
 
-    void fase_grupo(Equipe equipe1, Equipe equipe2);
+    void fase_grupo(Equipe[] grupo1);
 
 }

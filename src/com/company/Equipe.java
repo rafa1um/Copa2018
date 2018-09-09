@@ -11,6 +11,7 @@ public class Equipe {
     private int golsC;
     private int golsS;
     private int pts;
+    private int overall;
 
     // Métodos Públicos
     public void status() {
@@ -35,7 +36,7 @@ public class Equipe {
         this.setDerrotas(this.getDerrotas() + 1);
     }
 
-    public Equipe(String nome, String chave,int vitorias, int empates, int derrotas, int golsP, int golsC, int pts) {
+    public Equipe(String nome, String chave,int vitorias, int empates, int derrotas, int golsP, int golsC, int pts, int overall) {
         this.nome = nome;
         this.chave = chave;
         this.vitorias = vitorias;
@@ -44,7 +45,7 @@ public class Equipe {
         this.golsP = golsP;
         this.golsC = golsC;
         this.golsS = golsP - golsC;
-        this.pts = pts;
+        this.overall = overall;
     }
 
     public String getNome() {
@@ -119,5 +120,12 @@ public class Equipe {
         this.pts = pts;
     }
 
+    public int getOverall() {
+        return overall;
+    }
+
+    public void setOverall(int overall) {
+        this.overall = overall;
+    }
 }
 

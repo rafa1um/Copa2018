@@ -20,32 +20,22 @@ public class Partida {
             /* --------- Randomização do time vencedor de acordo com seu overall ---------- */
 
             Random aleatorio = new Random();
-            int g1 = aleatorio.nextInt(7);
-            int g2 = aleatorio.nextInt(7);
-            if(g1 < g2) {
-                g1 = aleatorio.nextInt(10);
-                g2 = aleatorio.nextInt(4) + 6;
-                if(g1 > g2) {
-                    this.placar1 = this.placar1 + 1;
-                } else {
-                    this.placar2 = this.placar2 + 1;
-                }
-            }
-            else if(g1 > g2) {
-                g1 = aleatorio.nextInt(4) + 6;
-                g2 = aleatorio.nextInt(10);
-                if(g1 > g2) {
-                    this.placar1 = this.placar1 + 1;
-                } else {
-                    this.placar2 = this.placar2 + 1;
-                }
-            } else {
-                g2 = aleatorio.nextInt(4) + 6;
-                g1 = aleatorio.nextInt(10);
-                if(g1 < g2) {
-                    this.placar1 = this.placar1 + 1;
-                } else {
-                    this.placar2 = this.placar2 + 1;
+            for (int i = 0; i < 90; i++) {
+                int g1 = aleatorio.nextInt(this.equipe1.getOverall()/10);
+                int g2 = aleatorio.nextInt(this.equipe2.getOverall()/10);
+
+                if (g1 < g2) {
+                    g1 = aleatorio.nextInt(26);
+                    g2 = aleatorio.nextInt(20) + 6;
+                    if (g1 == g2) {
+                        this.placar2 = this.placar2 + 1;
+                    }
+                } else if (g1 > g2) {
+                    g1 = aleatorio.nextInt(20) + 6;
+                    g2 = aleatorio.nextInt(26);
+                    if (g1 == g2) {
+                        this.placar1 = this.placar1 + 1;
+                    }
                 }
             }
 

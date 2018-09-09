@@ -1,6 +1,6 @@
 package com.company;
 
-public class Equipe {
+public class  Equipe {
     // Atributos
     private String nome;
     private String chave;

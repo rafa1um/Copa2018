@@ -15,7 +15,7 @@ public class Partida {
                 throw new IllegalArgumentException("Partida inválida na fase de grupos!");
             }
 
-            System.out.println(equipe1.getNome() + " @ " + equipe2.getNome());
+            System.out.println(equipe1.getNome() + " Vs. " + equipe2.getNome());
 
             /* --------- Randomização do time vencedor de acordo com seu overall ---------- */
 
@@ -44,20 +44,20 @@ public class Partida {
 
             /* -------------------- Fim random --------------------*/
 
-            System.out.println(equipe1.getNome() + " " + placar1 + " @ " + placar2 + " " + equipe2.getNome());
+            System.out.println(equipe1.getNome() + " | " + placar1 + " X " + placar2 + " | " + equipe2.getNome());
 
             if (placar1 > placar2) {
-                System.out.println(equipe1.getNome() + " Ganhou!!");
+                System.out.println(equipe1.getNome() + " Ganhou!!\n");
                 equipe1.setPts(equipe1.getPts() + 3);
                 equipe1.setVitorias(equipe1.getVitorias() + 1);
                 equipe2.setDerrotas(equipe2.getDerrotas() + 1);
             } else if (placar1 < placar2) {
-                System.out.println(equipe2.getNome() + " Ganhou!!");
+                System.out.println(equipe2.getNome() + " Ganhou!!\n");
                 equipe1.setPts(equipe2.getPts() + 3);
                 equipe2.setVitorias(equipe2.getVitorias() + 1);
                 equipe1.setDerrotas(equipe1.getDerrotas() + 1);
             } else {
-                System.out.println("Empate!!");
+                System.out.println("Empate!!\n");
                 equipe1.setPts(equipe1.getPts() + 1);
                 equipe2.setPts(equipe2.getPts() + 1);
                 equipe1.setEmpates(equipe1.getEmpates() + 1);

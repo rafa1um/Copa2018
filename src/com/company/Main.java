@@ -1,6 +1,8 @@
 package com.company;
 import java.util.Scanner;
 
+import static com.company.FaseGrupo.fase_grupo;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -75,10 +77,19 @@ public class Main {
 
         //System.out.println(n);
 
-        FaseGrupo p = new FaseGrupo();
-        p.fase_grupo(a, 1);
-        p.fase_grupo(a, 2);
-        p.fase_grupo(a, 3);
+        // Fase de grupos
+
+        //Rodada 1
+        fase_grupo(a,1);
+        fase_grupo(b,1);
+        fase_grupo(c,1);
+        fase_grupo(d,1);
+        fase_grupo(e,1);
+        fase_grupo(f,1);
+        fase_grupo(g,1);
+        fase_grupo(h,1);
+        System.out.println("Fim da rodada " + 1 + "\n");
+
         //MataMata q = new MataMata();
         //q.mata_mata(e[3], e[3]);
     }

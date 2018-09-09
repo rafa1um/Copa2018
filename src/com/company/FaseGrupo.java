@@ -1,12 +1,11 @@
 package com.company;
 
-import java.util.Random;
-
 import static com.company.Partida.partidaSimples;
 
 public class FaseGrupo {
 
-    public void fase_grupo(Equipe[] grupo, int rodada) {
+    protected static void fase_grupo(Equipe[] grupo, int rodada) {
+
         switch (rodada) {
             case 1:
                 partidaSimples(grupo[1], grupo[2]);
@@ -21,9 +20,6 @@ public class FaseGrupo {
                 partidaSimples(grupo[2], grupo[3]);
                 break;
         }
-
-
-        System.out.println("Fim da rodada " + rodada + "!\n");
 
     }
 

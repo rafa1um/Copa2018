@@ -2,6 +2,7 @@ package com.company;
 import java.util.Scanner;
 
 import static com.company.FaseGrupo.fase_grupo;
+import static com.company.MataMata.mata_mata;
 import static com.company.Menu.menu;
 
 public class Main {
@@ -84,8 +85,14 @@ public class Main {
         fase_grupo(h,1);
         System.out.println("Fim da rodada " + 1 + "\n");
 
-        //MataMata q = new MataMata();
-        //q.mata_mata(e[3], e[3]);
+        mata_mata(a,1);
+        mata_mata(b,1);
+        mata_mata(c,1);
+        mata_mata(d,1);
+        mata_mata(e,1);
+        mata_mata(f,1);
+        mata_mata(g,1);
+        mata_mata(h,1);
     }
 
 }

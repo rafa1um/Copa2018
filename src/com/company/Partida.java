@@ -6,68 +6,70 @@ public class Partida {
 
     private int placar1 = 0;
     private int placar2 = 0;
+    private int prorroga1 = -1;
+    private int prorroga2 = -1;
     private int penalti1 = 0;
     private int penalti2 = 0;
+    private Equipe equipe1;
+    private Equipe equipe2;
     private static int indice;
 
-    public void partidaSimples(Equipe equipe1, Equipe equipe2) {
-
+    public void partidaSimples(Equipe time1, Equipe time2) {
+        this.equipe1 = time1;
+        this.equipe2 = time2;
         try {
 
-            if (!(equipe1.getChave().equals(equipe2.getChave()) && equipe1 != equipe2)) {
+            if (!(this.equipe1.getChave().equals(this.equipe2.getChave()) && this.equipe1 != this.equipe2)) {
                 throw new IllegalArgumentException("Partida inválida na fase de grupos!");
             }
 
-            System.out.println(equipe1.getNome() + " Vs. " + equipe2.getNome());
+            // System.out.println("Prorrogação : " + this.equipe1.getNome() + " Vs. " + this.equipe2.getNome());
 
             /* --------- Randomização do time vencedor de acordo com seu overall ---------- */
 
             Random aleatorio = new Random();
             for (int i = 0; i < 90; i++) {
-                int g1 = aleatorio.nextInt(equipe1.getOverall() / 10);
-                int g2 = aleatorio.nextInt(equipe2.getOverall() / 10);
+                int g1 = aleatorio.nextInt(this.equipe1.getOverall() / 10);
+                int g2 = aleatorio.nextInt(this.equipe2.getOverall() / 10);
                 if (g1 < g2) {
-                    g1 = aleatorio.nextInt(equipe1.getOverall() / 10);
-                    g2 = aleatorio.nextInt(equipe1.getOverall() / 10) + 6;
+                    g1 = aleatorio.nextInt(this.equipe1.getOverall() / 10);
+                    g2 = aleatorio.nextInt(this.equipe1.getOverall() / 10) + 6;
                     if (g1 == g2) {
                         this.placar2 = this.placar2 + 1;
-                        equipe2.setGolsP(equipe2.getGolsP() + 1);
-                        equipe1.setGolsC(equipe1.getGolsC() - 1);
+                        this.equipe2.setGolsP(this.equipe2.getGolsP() + 1);
+                        this.equipe1.setGolsC(this.equipe1.getGolsC() - 1);
                     }
                 } else if (g1 > g2) {
-                    g1 = aleatorio.nextInt(equipe1.getOverall() / 10) + 6;
-                    g2 = aleatorio.nextInt(equipe1.getOverall() / 10);
+                    g1 = aleatorio.nextInt(this.equipe1.getOverall() / 10) + 6;
+                    g2 = aleatorio.nextInt(this.equipe1.getOverall() / 10);
                     if (g1 == g2) {
                         this.placar1 = this.placar1 + 1;
-                        equipe1.setGolsP(equipe1.getGolsP() + 1);
-                        equipe2.setGolsC(equipe2.getGolsC() - 1);
+                        this.equipe1.setGolsP(this.equipe1.getGolsP() + 1);
+                        this.equipe2.setGolsC(this.equipe2.getGolsC() - 1);
                     }
                 }
             }
 
             /* -------------------- Fim random --------------------*/
 
-            System.out.println(equipe1.getNome() + " | " + this.placar1 + " X " + this.placar2 + " | " + equipe2.getNome());
+           // System.out.println(this.equipe1.getNome() + " | " + this.placar1 + " X " + this.placar2 + " | " + this.equipe2.getNome());
 
             if (this.placar1 > this.placar2) {
-                System.out.println(equipe1.getNome() + " Ganhou!!\n");
-                equipe1.setPts(equipe1.getPts() + 3);
-                equipe1.setVitorias(equipe1.getVitorias() + 1);
-                equipe2.setDerrotas(equipe2.getDerrotas() + 1);
+                this.equipe1.setPts(this.equipe1.getPts() + 3);
+                this.equipe1.setVitorias(this.equipe1.getVitorias() + 1);
+                this.equipe2.setDerrotas(this.equipe2.getDerrotas() + 1);
             } else if (this.placar1 < this.placar2) {
-                System.out.println(equipe2.getNome() + " Ganhou!!\n");
-                equipe1.setPts(equipe2.getPts() + 3);
-                equipe2.setVitorias(equipe2.getVitorias() + 1);
-                equipe1.setDerrotas(equipe1.getDerrotas() + 1);
+                this.equipe1.setPts(this.equipe2.getPts() + 3);
+                this.equipe2.setVitorias(this.equipe2.getVitorias() + 1);
+                this.equipe1.setDerrotas(this.equipe1.getDerrotas() + 1);
             } else {
-                System.out.println("Empate!!\n");
-                equipe1.setPts(equipe1.getPts() + 1);
-                equipe2.setPts(equipe2.getPts() + 1);
-                equipe1.setEmpates(equipe1.getEmpates() + 1);
-                equipe2.setEmpates(equipe2.getEmpates() + 1);
+                this.equipe1.setPts(this.equipe1.getPts() + 1);
+                this.equipe2.setPts(this.equipe2.getPts() + 1);
+                this.equipe1.setEmpates(this.equipe1.getEmpates() + 1);
+                this.equipe2.setEmpates(this.equipe2.getEmpates() + 1);
             }
-            equipe1.setGolsS(equipe1.getGolsP() - equipe1.getGolsC());
-            equipe2.setGolsS(equipe2.getGolsP() - equipe2.getGolsC());
+            this.equipe1.setGolsS(this.equipe1.getGolsP() - this.equipe1.getGolsC());
+            this.equipe2.setGolsS(this.equipe2.getGolsP() - this.equipe2.getGolsC());
 
         } catch (IllegalArgumentException erro) {
             System.out.println(erro.getMessage());
@@ -75,55 +77,56 @@ public class Partida {
 
     }
 
-    public void partidaCompleta(Equipe equipe1, Equipe equipe2) {
-
+    public void partidaCompleta(Equipe time1, Equipe time2) {
+        this.equipe1 = time1;
+        this.equipe2 = time2;
         try {
 
-            if (!(equipe1.getChave().equals(equipe2.getChave()) && equipe1 != equipe2)) {
+            if (!(this.equipe1.getChave().equals(this.equipe2.getChave()) && this.equipe1 != this.equipe2)) {
                 throw new IllegalArgumentException("Partida inválida na fase de grupos!");
             }
 
-            System.out.println(equipe1.getNome() + " Vs. " + equipe2.getNome());
+           // System.out.println(this.equipe1.getNome() + " Vs. " + this.equipe2.getNome());
 
             /* --------- Randomização do time vencedor de acordo com seu overall ---------- */
 
             Random aleatorio = new Random();
             for (int i = 0; i < 90; i++) {
-                int g1 = aleatorio.nextInt(equipe1.getOverall() / 10);
-                int g2 = aleatorio.nextInt(equipe2.getOverall() / 10);
+                int g1 = aleatorio.nextInt(this.equipe1.getOverall() / 10);
+                int g2 = aleatorio.nextInt(this.equipe2.getOverall() / 10);
                 if (g1 < g2) {
-                    g1 = aleatorio.nextInt(equipe1.getOverall() / 10);
-                    g2 = aleatorio.nextInt(equipe1.getOverall() / 10) + 6;
+                    g1 = aleatorio.nextInt(this.equipe1.getOverall() / 10);
+                    g2 = aleatorio.nextInt(this.equipe1.getOverall() / 10) + 6;
                     if (g1 == g2) {
                         this.placar2 = this.placar2 + 1;
-                        equipe2.setGolsP(equipe2.getGolsP() + 1);
-                        equipe1.setGolsC(equipe1.getGolsC() - 1);
+                        this.equipe2.setGolsP(this.equipe2.getGolsP() + 1);
+                        this.equipe1.setGolsC(this.equipe1.getGolsC() - 1);
                     }
                 } else if (g1 > g2) {
-                    g1 = aleatorio.nextInt(equipe1.getOverall() / 10) + 6;
-                    g2 = aleatorio.nextInt(equipe1.getOverall() / 10);
+                    g1 = aleatorio.nextInt(this.equipe1.getOverall() / 10) + 6;
+                    g2 = aleatorio.nextInt(this.equipe1.getOverall() / 10);
                     if (g1 == g2) {
                         this.placar1 = this.placar1 + 1;
-                        equipe1.setGolsP(equipe1.getGolsP() + 1);
-                        equipe2.setGolsC(equipe2.getGolsC() - 1);
+                        this.equipe1.setGolsP(this.equipe1.getGolsP() + 1);
+                        this.equipe2.setGolsC(this.equipe2.getGolsC() - 1);
                     }
                 }
             }
 
             /* -------------------- Fim random --------------------*/
 
-            System.out.println(equipe1.getNome() + " | " + this.placar1 + " X " + this.placar2 + " | " + equipe2.getNome());
+//            System.out.println(this.equipe1.getNome() + " | " + this.placar1 + " X " + this.placar2 + " | " + this.equipe2.getNome());
 
             if (this.placar1 > this.placar2) {
-                System.out.println(equipe1.getNome() + " Ganhou!!\n");
+                System.out.println(this.equipe1.getNome() + " Ganhou!!\n");
             } else if (this.placar1 < this.placar2) {
-                System.out.println(equipe2.getNome() + " Ganhou!!\n");
+                System.out.println(this.equipe2.getNome() + " Ganhou!!\n");
             } else {
                 System.out.println("Empate!!");
-                partidaProrrogada(equipe1, equipe2);
+                partidaProrrogada();
             }
-            equipe1.setGolsS(equipe1.getGolsP() - equipe1.getGolsC());
-            equipe2.setGolsS(equipe2.getGolsP() - equipe2.getGolsC());
+            this.equipe1.setGolsS(this.equipe1.getGolsP() - this.equipe1.getGolsC());
+            this.equipe2.setGolsS(this.equipe2.getGolsP() - this.equipe2.getGolsC());
 
         } catch (IllegalArgumentException erro) {
             System.out.println(erro.getMessage());
@@ -132,54 +135,55 @@ public class Partida {
     }
 
 
-    public void partidaProrrogada(Equipe equipe1, Equipe equipe2) {
-
+    public void partidaProrrogada() {
+        this.prorroga1 = 0;
+        this.prorroga2 = 0;
         try {
 
-            if (!(equipe1.getChave().equals(equipe2.getChave()) && equipe1 != equipe2)) {
+            if (!(this.equipe1.getChave().equals(this.equipe2.getChave()) && this.equipe1 != this.equipe2)) {
                 throw new IllegalArgumentException("Partida inválida na fase de grupos!");
             }
 
-            System.out.println("Prorrogação : " + equipe1.getNome() + " Vs. " + equipe2.getNome());
+           // System.out.println("Prorrogação : " + this.equipe1.getNome() + " Vs. " + this.equipe2.getNome());
 
             /* --------- Randomização do time vencedor de acordo com seu overall ---------- */
 
             Random aleatorio = new Random();
             for (int i = 0; i < 30; i++) {
-                int g1 = aleatorio.nextInt(equipe1.getOverall() / 10);
-                int g2 = aleatorio.nextInt(equipe2.getOverall() / 10);
+                int g1 = aleatorio.nextInt(this.equipe1.getOverall() / 10);
+                int g2 = aleatorio.nextInt(this.equipe2.getOverall() / 10);
                 if (g1 < g2) {
-                    g1 = aleatorio.nextInt(equipe1.getOverall() / 10);
-                    g2 = aleatorio.nextInt(equipe1.getOverall() / 10) + 6;
+                    g1 = aleatorio.nextInt(this.equipe1.getOverall() / 10);
+                    g2 = aleatorio.nextInt(this.equipe1.getOverall() / 10) + 6;
                     if (g1 == g2) {
-                        this.placar2 = this.placar2 + 1;
-                        equipe2.setGolsP(equipe2.getGolsP() + 1);
-                        equipe1.setGolsC(equipe1.getGolsC() - 1);
+                        this.prorroga2 = this.prorroga2 + 1;
+                        this.equipe2.setGolsP(this.equipe2.getGolsP() + 1);
+                        this.equipe1.setGolsC(this.equipe1.getGolsC() - 1);
                     }
                 } else if (g1 > g2) {
-                    g1 = aleatorio.nextInt(equipe1.getOverall() / 10) + 6;
-                    g2 = aleatorio.nextInt(equipe1.getOverall() / 10);
+                    g1 = aleatorio.nextInt(this.equipe1.getOverall() / 10) + 6;
+                    g2 = aleatorio.nextInt(this.equipe1.getOverall() / 10);
                     if (g1 == g2) {
-                        this.placar1 = this.placar1 + 1;
-                        equipe1.setGolsP(equipe1.getGolsP() + 1);
-                        equipe2.setGolsC(equipe2.getGolsC() - 1);
+                        this.prorroga1 = this.prorroga1 + 1;
+                        this.equipe1.setGolsP(this.equipe1.getGolsP() + 1);
+                        this.equipe2.setGolsC(this.equipe2.getGolsC() - 1);
                     }
                 }
             }
 
             /* -------------------- Fim random --------------------*/
 
-            System.out.println(equipe1.getNome() + " | " + this.placar1 + " X " + this.placar2 + " | " + equipe2.getNome());
+//            System.out.println(this.equipe1.getNome() + " | " + this.prorroga1 + " X " + this.prorroga2 + " | " + this.equipe2.getNome());
 
-            if (this.placar1 > this.placar2) {
-                System.out.println(equipe1.getNome() + " Ganhou!!\n");
-            } else if (this.placar1 < this.placar2) {
-                System.out.println(equipe2.getNome() + " Ganhou!!\n");
+            if (this.prorroga1 > this.prorroga2) {
+                System.out.println(this.equipe1.getNome() + " Ganhou!!\n");
+            } else if (this.prorroga1 < this.prorroga2) {
+                System.out.println(this.equipe2.getNome() + " Ganhou!!\n");
             } else {
-                disputaPenaltis(equipe1, equipe2);
+                disputaPenaltis();
             }
-            equipe1.setGolsS(equipe1.getGolsP() - equipe1.getGolsC());
-            equipe2.setGolsS(equipe2.getGolsP() - equipe2.getGolsC());
+            this.equipe1.setGolsS(this.equipe1.getGolsP() - this.equipe1.getGolsC());
+            this.equipe2.setGolsS(this.equipe2.getGolsP() - this.equipe2.getGolsC());
 
         } catch (IllegalArgumentException erro) {
             System.out.println(erro.getMessage());
@@ -187,15 +191,15 @@ public class Partida {
 
     }
 
-    public void disputaPenaltis(Equipe equipe1, Equipe equipe2) {
+    public void disputaPenaltis() {
 
         try {
 
-            if (!(equipe1.getChave().equals(equipe2.getChave()) && equipe1 != equipe2)) {
+            if (!(this.equipe1.getChave().equals(this.equipe2.getChave()) && this.equipe1 != this.equipe2)) {
                 throw new IllegalArgumentException("Partida inválida na fase de grupos!");
             }
 
-            System.out.println("Disputa por penaltis : " + equipe1.getNome() + " Vs. " + equipe2.getNome());
+           // System.out.println("Disputa por penaltis : " + this.equipe1.getNome() + " Vs. " + this.equipe2.getNome());
 
             /* --------- Randomização do time vencedor de acordo com seu overall ---------- */
 
@@ -217,18 +221,36 @@ public class Partida {
 
             /* -------------------- Fim random --------------------*/
 
-            System.out.println(equipe1.getNome() + " | " + this.penalti1 + " X " + this.penalti2 + " | " + equipe2.getNome());
-
-            if (this.penalti1 > this.penalti2) {
-                System.out.println(equipe1.getNome() + " Ganhou!!\n");
-            } else {
-                System.out.println(equipe2.getNome() + " Ganhou!!\n");
-            }
+       //     System.out.println(this.equipe1.getNome() + " | " + this.penalti1 + " X " + this.penalti2 + " | " + this.equipe2.getNome());
 
         } catch (IllegalArgumentException erro) {
             System.out.println(erro.getMessage());
         }
 
+    }
+
+    public Equipe getEquipe1() {
+        return equipe1;
+    }
+
+    public Equipe getEquipe2() {
+        return equipe2;
+    }
+
+    public int getProrroga1() {
+        return prorroga1;
+    }
+
+    public void setProrroga1(int prorroga1) {
+        this.prorroga1 = prorroga1;
+    }
+
+    public int getProrroga2() {
+        return prorroga2;
+    }
+
+    public void setProrroga2(int prorroga2) {
+        this.prorroga2 = prorroga2;
     }
 
     public int getPlacar1() {

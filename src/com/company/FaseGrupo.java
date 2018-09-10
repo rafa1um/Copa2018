@@ -3,6 +3,8 @@ package com.company;
 
 import java.util.LinkedList;
 
+import static com.company.Menu.menu;
+
 public class FaseGrupo {
 
     protected static void fase_grupo(Equipe[] grupo, int rodada, LinkedList<Partida> partidas) {
@@ -10,7 +12,7 @@ public class FaseGrupo {
         Partida partida1 = new Partida();
         Partida partida2 = new Partida();
 
-        System.out.println("Rodada " + rodada + " || Grupo " + grupo[0].getChave());
+        System.out.println("\nRodada " + rodada + " || Grupo " + grupo[0].getChave());
 
         switch (rodada) {
             case 1:
@@ -32,6 +34,8 @@ public class FaseGrupo {
                 partidas.addFirst(partida2);
                 break;
         }
+
+        menu(partidas);
 
     }
 

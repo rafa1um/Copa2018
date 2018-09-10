@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Random;
 
-public class Partida {
+public final class Partida {
 
     protected static void partidaSimples(Equipe equipe1, Equipe equipe2) {
 

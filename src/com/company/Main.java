@@ -2,6 +2,7 @@ package com.company;
 import java.util.Scanner;
 
 import static com.company.FaseGrupo.fase_grupo;
+import static com.company.Menu.menu;
 
 public class Main {
 
@@ -64,18 +65,11 @@ public class Main {
         h[2] = new Equipe("Senegal", "H", 0, 0, 0, 0, 0, 0, 498);
         h[3] = new Equipe("Polônia", "H", 0, 0, 0, 0, 0, 0, 538);
 
-        System.out.println(" ========= MENU ========= ");
-        System.out.println("|  1 - Pontuação Geral   |");
-        System.out.println("|  2 - Cartões           |");
-        System.out.println("|  3 - Suspensões        |");
-        System.out.println("|  4 - Relatório do Dia  |");
-        System.out.println("|  5 - Sair              |");
-        System.out.println(" ========================\n");
 
-        System.out.println("Escolha uma opção: ");
-        //int n = inputNum.nextInt();
 
         //System.out.println(n);
+
+        menu();
 
         // Fase de grupos
 

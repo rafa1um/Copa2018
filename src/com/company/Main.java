@@ -1,4 +1,5 @@
 package com.company;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 import static com.company.FaseGrupo.fase_grupo;
@@ -8,7 +9,6 @@ import static com.company.Menu.menu;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner inputNum = new Scanner(System.in);
 	    Equipe a[] = new Equipe[4];
         Equipe b[] = new Equipe[4];
         Equipe c[] = new Equipe[4];
@@ -66,25 +66,22 @@ public class Main {
         h[2] = new Equipe("Senegal", "H", 0, 0, 0, 0, 0, 0, 498);
         h[3] = new Equipe("Polônia", "H", 0, 0, 0, 0, 0, 0, 538);
 
-
-
-        //System.out.println(n);
-
-        menu();
-
         // Fase de grupos
+        LinkedList<Partida> faseGrupos = new LinkedList<Partida>();
+        System.out.println("Fase de Grupos");
 
-        //Rodada 1
-        fase_grupo(a,1);
-        fase_grupo(b,1);
-        fase_grupo(c,1);
-        fase_grupo(d,1);
-        fase_grupo(e,1);
-        fase_grupo(f,1);
-        fase_grupo(g,1);
-        fase_grupo(h,1);
-        System.out.println("Fim da rodada " + 1 + "\n");
-
+        for (int i = 1; i < 4; i++) {
+            fase_grupo(a, 1, faseGrupos);
+            fase_grupo(b, 1, faseGrupos);
+            fase_grupo(c, 1, faseGrupos);
+            fase_grupo(d, 1, faseGrupos);
+            fase_grupo(e, 1, faseGrupos);
+            fase_grupo(f, 1, faseGrupos);
+            fase_grupo(g, 1, faseGrupos);
+            fase_grupo(h, 1, faseGrupos);
+            System.out.println("Fim da rodada " + i + "\n");
+        }
+/*
         mata_mata(a,1);
         mata_mata(b,1);
         mata_mata(c,1);
@@ -93,6 +90,7 @@ public class Main {
         mata_mata(f,1);
         mata_mata(g,1);
         mata_mata(h,1);
+        */
     }
 
 }

@@ -9,7 +9,7 @@ import static com.company.Menu.menu;
 public class Main {
 
     public static void main(String[] args) {
-	    Equipe a[] = new Equipe[4];
+        Equipe a[] = new Equipe[4];
         Equipe b[] = new Equipe[4];
         Equipe c[] = new Equipe[4];
         Equipe d[] = new Equipe[4];
@@ -19,8 +19,8 @@ public class Main {
         Equipe h[] = new Equipe[4];
 
         // Grupo A
-	    a[0] = new Equipe("Uruguai", "A",0, 0, 0, 0, 0, 0, 627);
-        a[1] = new Equipe("Russia", "A",0, 0, 0, 0, 0, 0, 410);
+        a[0] = new Equipe("Uruguai", "A", 0, 0, 0, 0, 0, 0, 627);
+        a[1] = new Equipe("Russia", "A", 0, 0, 0, 0, 0, 0, 410);
         a[2] = new Equipe("Arábia Saudita", "A", 0, 0, 0, 0, 0, 0, 355);
         a[3] = new Equipe("Egito", "A", 0, 0, 0, 0, 0, 0, 355);
 
@@ -81,16 +81,5 @@ public class Main {
             fase_grupo(h, i, faseGrupos);
             System.out.println("Fim da rodada " + i + "\n");
         }
-/*
-        mata_mata(a,1);
-        mata_mata(b,1);
-        mata_mata(c,1);
-        mata_mata(d,1);
-        mata_mata(e,1);
-        mata_mata(f,1);
-        mata_mata(g,1);
-        mata_mata(h,1);
-        */
     }
-
 }

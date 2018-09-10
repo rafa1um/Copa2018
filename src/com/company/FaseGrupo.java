@@ -35,7 +35,7 @@ public class FaseGrupo {
                 break;
         }
 
-        menu(partidas);
+        menu(partidas, grupo);
 
     }
 

@@ -2,8 +2,10 @@ package com.company;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+import static com.company.Tabela.tabelaGrupo;
+
 public final class Menu {
-    protected static void menu(LinkedList<Partida> partidas) {
+    protected static void menu(LinkedList<Partida> partidas, Equipe[] grupo) {
         Scanner inputNum = new Scanner(System.in);
 
         System.out.println("\n ========== MENU ========== ");
@@ -19,11 +21,12 @@ public final class Menu {
         switch (n) {
             case 1:
                 imprimirRelatorio(partidas);
-                menu(partidas);
+                menu(partidas, grupo);
                 break;
 
             case 2:
-                menu(partidas);
+                tabelaGrupo(grupo);
+                menu(partidas, grupo);
                 break;
 
             case 3:
@@ -70,6 +73,7 @@ public final class Menu {
                     }
                 }
             }
+            System.out.printf("\n");
         }
 
         // Partida 2

@@ -37,7 +37,7 @@ public class Partida {
                     if (g1 == g2) {
                         this.placar2 = this.placar2 + 1;
                         this.equipe2.setGolsP(this.equipe2.getGolsP() + 1);
-                        this.equipe1.setGolsC(this.equipe1.getGolsC() - 1);
+                        this.equipe1.setGolsC(this.equipe1.getGolsC() + 1);
                     }
                 } else if (g1 > g2) {
                     g1 = aleatorio.nextInt(this.equipe1.getOverall() / 10) + 6;
@@ -45,7 +45,7 @@ public class Partida {
                     if (g1 == g2) {
                         this.placar1 = this.placar1 + 1;
                         this.equipe1.setGolsP(this.equipe1.getGolsP() + 1);
-                        this.equipe2.setGolsC(this.equipe2.getGolsC() - 1);
+                        this.equipe2.setGolsC(this.equipe2.getGolsC() + 1);
                     }
                 }
             }

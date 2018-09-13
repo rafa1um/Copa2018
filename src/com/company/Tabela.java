@@ -7,7 +7,7 @@ public final class Tabela {
 
     protected static final void tabelaGrupo(Equipe[] grupo) {
 
-        final Object[][] table = new String[5][];
+        final Object[][] table = new String[5][]; // Vetor de strings;
         table[0] = new String[]{"Grupo " + grupo[0].getChave(), "P", "V", "E", "GP", "GC", "SG"};
         insertSort(grupo);
         for (int i = 1; i < 5; i++) {
@@ -21,11 +21,11 @@ public final class Tabela {
         }
         System.out.printf("\n");
     }
-    protected static final void insertSort(Equipe[] grupo) {
+    protected static final void insertSort(Equipe[] grupo) { // Algoritmo de ordenação para definir a classificação de cada grupo;
         Equipe temp;
         for (int i = 1; i < grupo.length; i++) {
             for (int j = i; j > 0; j--) {
-                if (grupo[j].getPts() > grupo[j - 1].getPts()) {
+                if (grupo[j].getPts() > grupo[j - 1].getPts()) { // Ordena em relação aos pontos de cada seleção;
                     temp = grupo[j];
                     grupo[j] = grupo[j - 1];
                     grupo[j - 1] = temp;

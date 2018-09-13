@@ -8,11 +8,11 @@ import static com.company.Menu.menu;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { // Registro das seleções participantes da Copa de 2018;
         Equipe a[] = new Equipe[4];
         Equipe b[] = new Equipe[4];
         Equipe c[] = new Equipe[4];
-        Equipe d[] = new Equipe[4];
+        Equipe d[] = new Equipe[4]; // Vetores para separar os as seleções em grupos;
         Equipe e[] = new Equipe[4];
         Equipe f[] = new Equipe[4];
         Equipe g[] = new Equipe[4];
@@ -67,7 +67,7 @@ public class Main {
         h[3] = new Equipe("Polônia", "H", 0, 0, 0, 0, 0, 0, 538);
 
         // Fase de grupos
-        LinkedList<Partida> faseGrupos = new LinkedList<>();
+        LinkedList<Partida> faseGrupos = new LinkedList<>(); // Linked List para guardar as partidas;
         System.out.println("Fase de Grupos");
 
         for (int i = 1; i < 4; i++) {

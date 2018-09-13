@@ -16,9 +16,9 @@ public final class Menu {
         System.out.println(" ==========================\n");
 
         System.out.println("Escolha uma opção: ");
-        int n = inputNum.nextInt();
+        int n = inputNum.nextInt(); // Leitura de um inteiro para usar no switch;
 
-        switch (n) {
+        switch (n) { // switch case para ser usado nas opções do menu;
             case 1:
                 imprimirRelatorio(partidas);
                 menu(partidas, grupo);
